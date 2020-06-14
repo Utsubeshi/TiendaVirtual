@@ -50,7 +50,6 @@ public class CatalogoFragment extends Fragment {
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto06));
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto07));
         rvCatalogo.setAdapter(new CatalogoAdapter(getContext(),listaProductos));
-
         return view;
     }
 }
