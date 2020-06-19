@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "611705661195",
+    "firebase_url": "https://tiendavirtual-27a85.firebaseio.com",
+    "project_id": "tiendavirtual-27a85",
+    "storage_bucket": "tiendavirtual-27a85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611705661195:android:30e0d9ee222be38706240e",
+        "android_client_info": {
+          "package_name": "com.mitienda.tiendavirtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611705661195-f8e8h4h6650ddj5vge52m4o58214u4iv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitienda.tiendavirtual",
+            "certificate_hash": "29ce0904a87e5d8147fb4ec73d8494bd7a00e4d9"
+          }
+        },
+        {
+          "client_id": "611705661195-ru9r934ca7di21h2elkkgftnakh9g5e3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY0WuIaz2FwK1TjAJ1yK8fLWaT7kK1Q_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611705661195-ru9r934ca7di21h2elkkgftnakh9g5e3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,8 @@
     android:background="@android:color/white"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp"
     tools:context=".fragments.LogInFragment">
 
     <TextView
@@ -36,7 +38,7 @@
         app:srcCompat="@drawable/login_shopping_image" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_username_login"
+        android:id="@+id/ti_username"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,18 +48,20 @@
         app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
         app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
         app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        app:startIconDrawable="@drawable/ic_account_circle_black_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_login_logo">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_username_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/val_et_usuario" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_login_password"
+        android:id="@+id/ti_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,24 +70,38 @@
         app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
         app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
         app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        app:startIconDrawable="@drawable/ic_lock_24px"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username_login">
+        app:layout_constraintTop_toBottomOf="@+id/ti_username">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/val_et_password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_recuperar_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/val_btn_reestablecer_pass"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ti_password" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="45dp"
         android:backgroundTint="@color/colorPrimary"
         android:insetTop="0dp"
         android:insetBottom="0dp"
@@ -91,9 +109,10 @@
         android:textColor="@android:color/white"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/ti_password" />
 
-    <com.google.android.material.button.MaterialButton
+ <!--   <com.google.android.material.button.MaterialButton
+        app:cornerRadius="20dp"
         android:id="@+id/btn_registrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,9 +122,21 @@
         android:insetBottom="0dp"
         android:text="@string/val_btn_registro"
         android:textColor="@color/colorPrimaryDark"
-        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />-->
+
+    <TextView
+        android:id="@+id/btn_registrarse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/val_btn_registrar"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
@@ -119,21 +150,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_registrarse" />
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/colorRojoGoogle"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="@string/val_btn_google"
-        android:textColor="@android:color/white"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/ic_google_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

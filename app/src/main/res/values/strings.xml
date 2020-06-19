@@ -2,7 +2,7 @@
     <string name="app_name">Tienda Virtual</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Usuario</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -24,5 +24,13 @@
     <string name="val_btn_login">ingresar</string>
     <string name="val_btn_registro">Registrarse</string>
     <string name="val_btn_google">Ingresar con Google</string>
+    <string name="menu_logout">Cerrar sesion</string>
+    <string name="action_logout">Cerrar sesion</string>
+    <string name="val_btn_registrar">No esta registrado?</string>
+    <string name="val_btn_reestablecer_pass">Olvido su contraseña?</string>
+    <string name="val_btn_registrarse">Registrarse</string>
+    <string name="val_et_password2">Repetir contraseña</string>
+    <string name="val_et_usuario_nombre">Ingrese su nombre</string>
+    <string name="tv_titulo_registro">Crea una cuenta</string>
 
 </resources>
