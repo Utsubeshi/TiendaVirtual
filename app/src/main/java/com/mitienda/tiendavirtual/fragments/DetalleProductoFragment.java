@@ -1,24 +1,21 @@
 package com.mitienda.tiendavirtual.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mitienda.tiendavirtual.MainActivity;
 import com.mitienda.tiendavirtual.R;
 
 public class DetalleProductoFragment extends Fragment implements View.OnClickListener {
 
     private ImageView ivAumentar, ivReducir;
-    private TextView tvCantidad;
+    private TextView tvCantidad, tvNombre;
     int contador = 1;
 
     @Override

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mitienda.tiendavirtual.R;
@@ -15,6 +16,8 @@ import com.mitienda.tiendavirtual.model.Producto;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.navigation.Navigation.findNavController;
 
 public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHolder> {
 
@@ -39,6 +42,12 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         holder.imagenProducto.setImageResource(producto.getImagenTest());
         holder.tvNombreProduco.setText(producto.getNombre());
         holder.tvPrecioProducto.setText(String.format("S/ %s", producto.getPrecio()));
+        holder.contenedor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findNavController(v).navigate(R.id.action_nav_ver_detalle_producto);
+            }
+        });
     }
 
     public void agregarElementos(ArrayList<Producto> data){
@@ -56,9 +65,11 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
 
         ImageView imagenProducto;
         TextView tvNombreProduco, tvPrecioProducto;
+        ConstraintLayout contenedor;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            contenedor = itemView.findViewById(R.id.producto_contenedor);
             imagenProducto = itemView.findViewById(R.id.iv_producto_imagen);
             tvNombreProduco = itemView.findViewById(R.id.tv_producto_nombre);
             tvPrecioProducto = itemView.findViewById(R.id.tv_producto_precio);

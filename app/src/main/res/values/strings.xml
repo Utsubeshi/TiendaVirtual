@@ -35,5 +35,6 @@
     <string name="val_detalle_color">Color</string>
     <string name="val_detalle_precio">Precio</string>
     <string name="val_btn_add_cart">Añadir al carro</string>
+    <string name="val_fragment_detalle_producto">Detalle del producto</string>
 
 </resources>

@@ -1,16 +1,13 @@
 package com.mitienda.tiendavirtual.fragments;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Space;
-import android.widget.TextView;
 
 import com.mitienda.tiendavirtual.R;
 import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
@@ -23,6 +20,7 @@ public class CatalogoFragment extends Fragment {
     private RecyclerView rvCatalogo;
     ArrayList<Producto> listaProductos;
     private CatalogoAdapter adapter;
+
 
     public CatalogoFragment() {
         // Required empty public constructor
@@ -39,8 +37,8 @@ public class CatalogoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_catalogo, container, false);
         rvCatalogo = view.findViewById(R.id.rv_contenedor_productos);
-        rvCatalogo.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        //return inflater.inflate(R.layout.fragment_catalogo, container, false);
+        rvCatalogo.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
         listaProductos = new ArrayList<Producto>();
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto01));
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto02));
@@ -49,7 +47,10 @@ public class CatalogoFragment extends Fragment {
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto05));
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto06));
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto07));
-        rvCatalogo.setAdapter(new CatalogoAdapter(getContext(),listaProductos));
+        adapter = new CatalogoAdapter(getContext(), listaProductos);
+        rvCatalogo.setAdapter(adapter);
         return view;
     }
+
 }
+
