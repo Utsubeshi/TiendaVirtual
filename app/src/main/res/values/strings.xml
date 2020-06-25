@@ -32,5 +32,8 @@
     <string name="val_et_password2">Repetir contraseña</string>
     <string name="val_et_usuario_nombre">Ingrese su nombre</string>
     <string name="tv_titulo_registro">Crea una cuenta</string>
+    <string name="val_detalle_color">Color</string>
+    <string name="val_detalle_precio">Precio</string>
+    <string name="val_btn_add_cart">Añadir al carro</string>
 
 </resources>

@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +60,7 @@ public class LogInFragment extends Fragment {
 
         etEmail = view.findViewById(R.id.et_username_login);
         etPassword = view.findViewById(R.id.et_login_password);
-        btnLogin = view.findViewById(R.id.btn_login);
+        btnLogin = view.findViewById(R.id.btn_add_cart);
         tvRegistar = view.findViewById(R.id.btn_registrarse);
         tvRecuperarPass = view.findViewById(R.id.tv_recuperar_pass);
         btnsignInGoogle = view.findViewById(R.id.btn_google_login);

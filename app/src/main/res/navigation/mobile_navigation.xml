@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_catalogo">
+    app:startDestination="@id/detalleProductoFragment">
 
     <fragment
         android:id="@+id/nav_mispedidos"
@@ -15,4 +15,9 @@
         android:name="com.mitienda.tiendavirtual.fragments.CatalogoFragment"
         android:label="@string/menu_catalogo"
         tools:layout="@layout/fragment_catalogo" />
+    <fragment
+        android:id="@+id/detalleProductoFragment"
+        android:name="com.mitienda.tiendavirtual.fragments.DetalleProductoFragment"
+        android:label="fragment_detalle_producto"
+        tools:layout="@layout/fragment_detalle_producto" />
 </navigation>
