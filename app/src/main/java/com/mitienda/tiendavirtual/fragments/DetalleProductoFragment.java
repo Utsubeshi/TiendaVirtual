@@ -20,7 +20,7 @@ import com.mitienda.tiendavirtual.model.Producto;
 public class DetalleProductoFragment extends Fragment implements View.OnClickListener {
 
     private ImageView ivAumentar, ivReducir;
-    private TextView tvCantidad, tvNombre;
+    private TextView tvCantidad, tvNombre, tvCategoria, tvDetalle, tvColor, tvPrecio ;
     private MaterialButton btnAddToCart;
     int contador = 1;
     private Producto producto;
@@ -31,13 +31,17 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
         View view = inflater.inflate(R.layout.fragment_detalle_producto, container, false);
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
         fab.hide();
-        ivAumentar = view.findViewById(R.id.iv_mas_producto);
-        ivReducir = view.findViewById(R.id.iv_menos_producto);
+        ivAumentar = view.findViewById(R.id.iv_carrito_mas_producto);
+        ivReducir = view.findViewById(R.id.iv_carrito_menos_producto);
         ivAumentar.setOnClickListener(this);
         ivReducir.setOnClickListener(this);
-        tvCantidad = view.findViewById(R.id.tv_cantidad_producto);
+        tvCantidad = view.findViewById(R.id.tv_carrito_cantidad_producto);
         tvNombre = view.findViewById(R.id.tv_titulo_detalle_prducto);
-        btnAddToCart = view.findViewById(R.id.btn_detalle_add_cart);
+        tvCategoria = view.findViewById(R.id.tv_categoria_detalle_producto);
+        tvDetalle = view.findViewById(R.id.tv_detalle_prducto);
+        tvColor = view.findViewById(R.id.tv_color_prducto);
+        tvPrecio = view.findViewById(R.id.tv_precio_producto);
+        btnAddToCart = view.findViewById(R.id.btn_checkout);
         btnAddToCart.setOnClickListener(this);
         return view;
     }
@@ -48,7 +52,14 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
         if (getArguments() != null){
             DetalleProductoFragmentArgs args = DetalleProductoFragmentArgs.fromBundle(getArguments());
             producto = args.getProducto();
-            tvNombre.setText(producto.getNombre());
+            String titulo = producto.getMarca() + " " + producto.getNombre();
+            tvNombre.setText(titulo);
+            tvColor.setText(producto.getColor());
+            String detalle = producto.getDetalle();
+            String detalleModificado = detalle.replace("; ", "\n");
+            tvDetalle.setText(detalleModificado);
+            tvCategoria.setText(producto.getCategoria());
+            tvPrecio.setText(String.valueOf(producto.getPrecio()));
         }
     }
 
@@ -63,19 +74,19 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         contador = Integer.parseInt(tvCantidad.getText().toString());
         switch (v.getId()){
-            case (R.id.iv_mas_producto):
+            case (R.id.iv_carrito_mas_producto):
                 if (contador < 3) {
                     contador++;
                     tvCantidad.setText(String.valueOf(contador));
                 }
                 break;
-            case (R.id.iv_menos_producto):
+            case (R.id.iv_carrito_menos_producto):
                 if (contador > 1) {
                     contador--;
                     tvCantidad.setText(String.valueOf(contador));
                 }
                 break;
-            case (R.id.btn_detalle_add_cart):
+            case (R.id.btn_checkout):
                 //TODO agregar producto al carro y su cantidad
                 Toast.makeText(getContext(), "Producto: " + producto.getNombre() + " Cantidad: " + contador, Toast.LENGTH_SHORT).show();
             default:

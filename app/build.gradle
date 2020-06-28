@@ -49,6 +49,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     //Implementar multidex (revisar más documentacion)
     implementation 'com.android.support:multidex:1.0.3'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 

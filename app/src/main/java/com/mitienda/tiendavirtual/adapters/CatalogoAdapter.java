@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mitienda.tiendavirtual.R;
 import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
 import com.mitienda.tiendavirtual.model.Producto;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +43,14 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull CatalogoAdapter.ViewHolder holder, int position) {
         Producto producto = lista.get(position);
-        holder.imagenProducto.setImageResource(producto.getImagenTest());
-        holder.tvNombreProduco.setText(producto.getNombre());
+        String titulo = producto.getMarca() + " " + producto.getNombre();
+        holder.tvNombreProduco.setText(titulo);
         holder.tvPrecioProducto.setText(String.format("S/ %s", producto.getPrecio()));
+        Picasso.get().load(producto.getUrlImagen()).into(holder.imagenProducto);
         holder.imagenProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CatalogoFragmentDirections.ActionNavVerDetalleProducto action = CatalogoFragmentDirections.actionNavVerDetalleProducto(producto);
-                //action.setNombreProducto(producto.getNombre());
                 findNavController(v).navigate(action);
             }
         });

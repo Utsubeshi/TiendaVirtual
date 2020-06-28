@@ -37,5 +37,8 @@
     <string name="val_btn_add_cart">Añadir al carro</string>
     <string name="val_fragment_detalle_producto">Detalle del producto</string>
     <string name="label_carrito">Mi carrito de compras</string>
+    <string name="val_btn_checkout">checkout</string>
+    <string name="val_total">Sub-Total:</string>
+    <string name="val_cantidad">Cantidad de productos</string>
 
 </resources>

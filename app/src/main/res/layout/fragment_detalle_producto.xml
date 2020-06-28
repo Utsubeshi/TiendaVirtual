@@ -10,12 +10,12 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="196dp"
         android:background="@drawable/rounded_white_bg"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/lato_bold"
         android:text="TextView"
         android:textColor="@color/colorPrimary"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalle_prducto" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_detalle_add_cart"
+        android:id="@+id/btn_checkout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
@@ -80,34 +80,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria_detalle_producto" />
 
     <ImageView
-        android:id="@+id/iv_menos_producto"
+        android:id="@+id/iv_carrito_menos_producto"
         android:layout_width="70dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/ic_baseline_indeterminate_check_box_24"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_detalle_add_cart"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_checkout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_detalle_add_cart" />
+        app:layout_constraintTop_toTopOf="@+id/btn_checkout" />
 
     <ImageView
-        android:id="@+id/iv_mas_producto"
+        android:id="@+id/iv_carrito_mas_producto"
         android:layout_width="70dp"
         android:layout_height="0dp"
         android:src="@drawable/ic_baseline_add_box_24"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cantidad_producto"
-        app:layout_constraintStart_toEndOf="@+id/tv_cantidad_producto"
-        app:layout_constraintTop_toTopOf="@+id/tv_cantidad_producto" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_carrito_cantidad_producto"
+        app:layout_constraintStart_toEndOf="@+id/tv_carrito_cantidad_producto"
+        app:layout_constraintTop_toTopOf="@+id/tv_carrito_cantidad_producto" />
 
     <TextView
-        android:id="@+id/tv_cantidad_producto"
+        android:id="@+id/tv_carrito_cantidad_producto"
         android:layout_width="50dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
@@ -115,55 +116,52 @@
         android:textAlignment="gravity"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_menos_producto"
-        app:layout_constraintStart_toEndOf="@+id/iv_menos_producto"
-        app:layout_constraintTop_toTopOf="@+id/iv_menos_producto" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_carrito_menos_producto"
+        app:layout_constraintStart_toEndOf="@+id/iv_carrito_menos_producto"
+        app:layout_constraintTop_toTopOf="@+id/iv_carrito_menos_producto" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="25dp"
         android:text="@string/val_detalle_color"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_cart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detalle_prducto" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_color_prducto"
+        app:layout_constraintStart_toStartOf="@+id/tv_color_prducto" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="25dp"
         android:text="@string/val_detalle_precio"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_precio_producto"
+        app:layout_constraintEnd_toEndOf="@+id/btn_checkout" />
 
     <TextView
         android:id="@+id/tv_color_prducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
         android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_carrito_cantidad_producto"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_precio_producto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
         android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_color_prducto"
+        app:layout_constraintEnd_toEndOf="@+id/btn_checkout"
+        app:layout_constraintTop_toTopOf="@+id/tv_color_prducto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
