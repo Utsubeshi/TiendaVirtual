@@ -18,10 +18,27 @@
         <action
             android:id="@+id/action_nav_ver_detalle_producto"
             app:destination="@id/nav_detalle_producto" />
+        <action
+            android:id="@+id/action_nav_catalogo_to_shopCartFragment"
+            app:destination="@id/shopCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_detalle_producto"
         android:name="com.mitienda.tiendavirtual.fragments.DetalleProductoFragment"
         android:label="@string/val_fragment_detalle_producto"
-        tools:layout="@layout/fragment_detalle_producto" />
+        tools:layout="@layout/fragment_detalle_producto" >
+        <argument
+            android:name="nombre_producto"
+            app:argType="string"
+            android:defaultValue='"nombre del producto"' />
+        <argument
+            android:name="producto"
+            app:argType="com.mitienda.tiendavirtual.model.Producto"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopCartFragment"
+        android:name="com.mitienda.tiendavirtual.fragments.ShopCartFragment"
+        android:label="@string/label_carrito"
+        tools:layout="@layout/fragment_shop_cart" />
 </navigation>

@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_sign_in" />
     <fragment
         android:id="@+id/passwordRecoveryFragment"
-        android:name="com.mitienda.tiendavirtual.PasswordRecoveryFragment"
+        android:name="com.mitienda.tiendavirtual.fragments.PasswordRecoveryFragment"
         android:label="fragment_password_recovery"
         tools:layout="@layout/fragment_password_recovery" />
 </navigation>

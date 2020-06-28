@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -23,8 +24,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
 import com.mitienda.tiendavirtual.fragments.DetalleProductoFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private TextView tvEmailUsuario;
     FloatingActionButton fab;
+    private NavController navController;
 
     //Fragments
     DetalleProductoFragment detalleProductoFragment;
@@ -42,16 +44,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /*Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);*/
         fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -60,12 +54,20 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView)navView.findViewById(R.id.tv_user_email_main);
         tv.setText(firebaseAuth.getCurrentUser().getEmail());
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_mispedidos, R.id.nav_catalogo)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_mispedidos, R.id.nav_catalogo, R.id.shopCartFragment)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = CatalogoFragmentDirections.actionNavCatalogoToShopCartFragment();
+                navController.navigate(action);
+
+            }
+        });
     }
 
     @Override
@@ -110,9 +112,4 @@ public class MainActivity extends AppCompatActivity {
         });
         finish();
     }
-
-/*    public void ocultarFab(){
-        fab.hide();
-    }*/
-
 }

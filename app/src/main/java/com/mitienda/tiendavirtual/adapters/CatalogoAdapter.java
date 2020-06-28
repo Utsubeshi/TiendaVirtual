@@ -4,14 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mitienda.tiendavirtual.R;
+import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
 import com.mitienda.tiendavirtual.model.Producto;
 
 import java.util.ArrayList;
@@ -24,9 +27,9 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
     Context context;
     List<Producto> lista;
 
-    public CatalogoAdapter(Context context, ArrayList<Producto> data) {
+    public CatalogoAdapter(Context context) {
         this.context = context;
-        lista = data;
+        lista = new ArrayList<>();
     }
 
     @NonNull
@@ -42,10 +45,19 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         holder.imagenProducto.setImageResource(producto.getImagenTest());
         holder.tvNombreProduco.setText(producto.getNombre());
         holder.tvPrecioProducto.setText(String.format("S/ %s", producto.getPrecio()));
-        holder.contenedor.setOnClickListener(new View.OnClickListener() {
+        holder.imagenProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findNavController(v).navigate(R.id.action_nav_ver_detalle_producto);
+                CatalogoFragmentDirections.ActionNavVerDetalleProducto action = CatalogoFragmentDirections.actionNavVerDetalleProducto(producto);
+                //action.setNombreProducto(producto.getNombre());
+                findNavController(v).navigate(action);
+            }
+        });
+        holder.btnAgregarAlCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO agregar producto al carro
+                Toast.makeText(context, "add item", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -61,11 +73,12 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         return lista.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
 
         ImageView imagenProducto;
         TextView tvNombreProduco, tvPrecioProducto;
         ConstraintLayout contenedor;
+        ImageButton btnAgregarAlCarro;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +86,7 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
             imagenProducto = itemView.findViewById(R.id.iv_producto_imagen);
             tvNombreProduco = itemView.findViewById(R.id.tv_producto_nombre);
             tvPrecioProducto = itemView.findViewById(R.id.tv_producto_precio);
+            btnAgregarAlCarro = itemView.findViewById(R.id.btn_add_to_cart);
         }
     }
 }

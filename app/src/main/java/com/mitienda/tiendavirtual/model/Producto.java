@@ -1,9 +1,11 @@
 package com.mitienda.tiendavirtual.model;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Producto implements Serializable {
+public class Producto implements Parcelable {
 
+    private int id;
     private String nombre;
     private String descripcion;
     private String marca;
@@ -14,6 +16,14 @@ public class Producto implements Serializable {
     private String categoria;
     private String urlImagen;
     private String urlImagenCatalogo;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     //
     private int imagenTest;
@@ -27,7 +37,8 @@ public class Producto implements Serializable {
         this.imagenTest = imagenTest;
     }
 
-    public Producto(String nombre, String descripcion, String marca, double precio, double precioCosto, int stock, int stockMinimo, String categoria, String urlImagen, String urlImagenCatalogo, int imagenTest) {
+    public Producto(int id, String nombre, String descripcion, String marca, double precio, double precioCosto, int stock, int stockMinimo, String categoria, String urlImagen, String urlImagenCatalogo, int imagenTest) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
@@ -40,6 +51,33 @@ public class Producto implements Serializable {
         this.urlImagenCatalogo = urlImagenCatalogo;
         this.imagenTest = imagenTest;
     }
+
+    protected Producto(Parcel in) {
+        id = in.readInt();
+        nombre = in.readString();
+        descripcion = in.readString();
+        marca = in.readString();
+        precio = in.readDouble();
+        precioCosto = in.readDouble();
+        stock = in.readInt();
+        stockMinimo = in.readInt();
+        categoria = in.readString();
+        urlImagen = in.readString();
+        urlImagenCatalogo = in.readString();
+        imagenTest = in.readInt();
+    }
+
+    public static final Creator<Producto> CREATOR = new Creator<Producto>() {
+        @Override
+        public Producto createFromParcel(Parcel in) {
+            return new Producto(in);
+        }
+
+        @Override
+        public Producto[] newArray(int size) {
+            return new Producto[size];
+        }
+    };
 
     public int getImagenTest() {
         return imagenTest;
@@ -127,5 +165,26 @@ public class Producto implements Serializable {
 
     public void setUrlImagenCatalogo(String urlImagenCatalogo) {
         this.urlImagenCatalogo = urlImagenCatalogo;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nombre);
+        dest.writeString(descripcion);
+        dest.writeString(marca);
+        dest.writeDouble(precio);
+        dest.writeDouble(precioCosto);
+        dest.writeInt(stock);
+        dest.writeInt(stockMinimo);
+        dest.writeString(categoria);
+        dest.writeString(urlImagen);
+        dest.writeString(urlImagenCatalogo);
+        dest.writeInt(imagenTest);
     }
 }

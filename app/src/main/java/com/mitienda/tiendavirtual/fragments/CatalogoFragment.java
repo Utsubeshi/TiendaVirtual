@@ -15,21 +15,14 @@ import com.mitienda.tiendavirtual.model.Producto;
 
 import java.util.ArrayList;
 
-public class CatalogoFragment extends Fragment {
+public class CatalogoFragment extends Fragment  {
 
     private RecyclerView rvCatalogo;
     ArrayList<Producto> listaProductos;
     private CatalogoAdapter adapter;
 
-
     public CatalogoFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -38,19 +31,19 @@ public class CatalogoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_catalogo, container, false);
         rvCatalogo = view.findViewById(R.id.rv_contenedor_productos);
         rvCatalogo.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
         listaProductos = new ArrayList<Producto>();
         listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto01));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto02));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto03));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto04));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto05));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto06));
-        listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto07));
-        adapter = new CatalogoAdapter(getContext(), listaProductos);
+        listaProductos.add(new Producto("Zapatilla 2", 200, R.drawable.producto02));
+        listaProductos.add(new Producto("Zapatilla 3", 200, R.drawable.producto03));
+        listaProductos.add(new Producto("Zapatilla 4", 200, R.drawable.producto04));
+        listaProductos.add(new Producto("Zapatilla 5", 200, R.drawable.producto05));
+        listaProductos.add(new Producto("Zapatilla 6", 200, R.drawable.producto06));
+        listaProductos.add(new Producto("Zapatilla 7", 200, R.drawable.producto07));
+        adapter = new CatalogoAdapter(getContext());
+        adapter.agregarElementos(listaProductos);
         rvCatalogo.setAdapter(adapter);
+        String nombre = "zapatilla";
         return view;
     }
-
 }
 
