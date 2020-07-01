@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -19,10 +24,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mitienda.tiendavirtual.R;
 import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
 import com.mitienda.tiendavirtual.model.Producto;
+import com.mitienda.tiendavirtual.model.SharedViewModel;
 
 import java.util.ArrayList;
 
-public class CatalogoFragment extends Fragment  {
+public class CatalogoFragment extends Fragment implements CatalogoAdapter.OnItemClickListener {
 
     private RecyclerView rvCatalogo;
     ArrayList<Producto> listaProductos;
@@ -31,6 +37,10 @@ public class CatalogoFragment extends Fragment  {
     //Firebase
     private FirebaseFirestore dbFireStore = FirebaseFirestore.getInstance();
     private CollectionReference coleccion = dbFireStore.collection("Productos");
+
+    //NavController
+    private NavController navController;
+    private SharedViewModel sharedViewModel;
 
     public CatalogoFragment() {
         // Required empty public constructor
@@ -43,18 +53,12 @@ public class CatalogoFragment extends Fragment  {
         rvCatalogo = view.findViewById(R.id.rv_contenedor_productos);
         rvCatalogo.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         listaProductos = new ArrayList<Producto>();
-        /*listaProductos.add(new Producto("Zapatilla 1", 200, R.drawable.producto01));
-        listaProductos.add(new Producto("Zapatilla 2   200, R.drawable.producto03));
-        listaProductos.add(new Producto("Zapatilla 4", 200, R.drawable.producto04));
-        listaProductos.add(new Producto("Zapatilla 5", 200, R.drawable.producto05));
-        listaProductos.add(new Producto("Zapatilla 6", 200, R.drawable.producto06));
-        listaProductos.add(new Producto("Zapatilla 7", 200, R.drawable.producto07));*/
         getProductosFromFirestore();
-        adapter = new CatalogoAdapter(getContext());
+        adapter = new CatalogoAdapter(getContext(), this);
         rvCatalogo.setAdapter(adapter);
         return view;
     }
-
+    //consumiendo FireStore
     public void getProductosFromFirestore(){
         coleccion.addSnapshotListener( new EventListener<QuerySnapshot>() {
             @Override
@@ -69,8 +73,21 @@ public class CatalogoFragment extends Fragment  {
                 adapter.agregarElementos(listaProductos);
             }
         });
-
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+    }
+
+    //agregar producto al carrito
+    @Override
+    public void onItemClick(Producto producto) {
+        Toast.makeText(requireContext(), producto.getNombre() + " Agreado al carro", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(requireContext(), producto.getId(), Toast.LENGTH_SHORT).show();
+        sharedViewModel.agregarProducto(producto);
+    }
 }
 

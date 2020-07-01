@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mitienda.tiendavirtual.R;
+import com.mitienda.tiendavirtual.fragments.ButtonHightLighterOnTouch;
 import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
 import com.mitienda.tiendavirtual.model.Producto;
 import com.squareup.picasso.Picasso;
@@ -27,10 +27,12 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
 
     Context context;
     List<Producto> lista;
+    OnItemClickListener onItemClickListener;
 
-    public CatalogoAdapter(Context context) {
+    public CatalogoAdapter(Context context, OnItemClickListener onItemClickListener) {
         this.context = context;
         lista = new ArrayList<>();
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -57,8 +59,8 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
         holder.btnAgregarAlCarro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO agregar producto al carro
-                Toast.makeText(context, "add item", Toast.LENGTH_SHORT).show();
+                producto.setCantidad(1);
+                onItemClickListener.onItemClick(producto);
             }
         });
     }
@@ -88,6 +90,12 @@ public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHo
             tvNombreProduco = itemView.findViewById(R.id.tv_producto_nombre);
             tvPrecioProducto = itemView.findViewById(R.id.tv_producto_precio);
             btnAgregarAlCarro = itemView.findViewById(R.id.btn_add_to_cart);
+            //efecto
+            btnAgregarAlCarro.setOnTouchListener(new ButtonHightLighterOnTouch(btnAgregarAlCarro));
         }
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(Producto producto);
     }
 }

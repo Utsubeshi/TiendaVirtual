@@ -160,4 +160,13 @@ public class Producto implements Parcelable {
         dest.writeString(color);
 
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", marca='" + marca + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }

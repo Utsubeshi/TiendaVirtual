@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mitienda.tiendavirtual.R;
+import com.mitienda.tiendavirtual.fragments.ButtonHightLighterOnTouch;
 import com.mitienda.tiendavirtual.model.Producto;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +23,11 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.ViewHo
 
     Context context;
     List<Producto> carritoList;
+    OnItemClickListener onItemClickListener;
 
-    public ShopCartAdapter(Context context) {
+    public ShopCartAdapter(Context context, OnItemClickListener onItemClickListener) {
         this.context = context;
+        this.onItemClickListener = onItemClickListener;
         carritoList = new ArrayList<>();
     }
 
@@ -43,9 +47,33 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ShopCartAdapter.ViewHolder holder, int position) {
         Producto producto = carritoList.get(position);
-        holder.tvNombre.setText(producto.getNombre());
-        holder.tvPrecio.setText(String.valueOf(producto.getPrecio()));
-        holder.tvMarca.setText(producto.getMarca());
+        Picasso.get().load(producto.getUrlImagen()).into(holder.ivProducto);
+        String nombre = producto.getMarca() + " " + producto.getNombre();
+        holder.tvNombre.setText(nombre);
+        String precio = "S/ " + (producto.getPrecio() * producto.getCantidad());
+        holder.tvPrecio.setText(precio);
+        holder.tvMarca.setText(producto.getCategoria());
+        holder.tvCantidad.setText(String.valueOf(producto.getCantidad()));
+        holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.borrarProducto(position);
+            }
+        });
+        holder.ivMasCantidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //maximo 3 productos
+                if (producto.getCantidad() < 3) onItemClickListener.aumentarCantidad(position);
+            }
+        });
+        holder.ivMenosCantidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //minimo 1 producto
+                if (producto.getCantidad() > 1) onItemClickListener.reducirCantidad(position);
+            }
+        });
     }
 
     @Override
@@ -69,7 +97,19 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.ViewHo
             tvPrecio = itemView.findViewById(R.id.tv_carrito_precio_producto);
             tvCantidad = itemView.findViewById(R.id.tv_carrito_cantidad_producto);
             btnEliminar = itemView.findViewById(R.id.btn_carrito_quitar_producto);
+            btnEliminar.setOnTouchListener(new ButtonHightLighterOnTouch(btnEliminar));
+            ivMenosCantidad.setOnTouchListener(new ButtonHightLighterOnTouch(ivMenosCantidad));
+            ivMasCantidad.setOnTouchListener(new ButtonHightLighterOnTouch(ivMasCantidad));
         }
+    }
+    //para acceder al SharedViewModel
+    public interface OnItemClickListener {
+        //quitar producto del carro
+        public void borrarProducto(int position);
+        //aumentar la cantidad de un producto en el carro
+        public void aumentarCantidad(int position);
+        //reducir la cantidad de un producto en el carro
+        public void reducirCantidad(int position);
     }
 }
 

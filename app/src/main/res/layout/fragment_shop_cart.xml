@@ -11,11 +11,12 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_checkout"
+        android:id="@+id/btn_add"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/colorPrimary"
+        android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/val_btn_checkout"
@@ -43,9 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="@string/val_total"
-        android:textSize="18sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
