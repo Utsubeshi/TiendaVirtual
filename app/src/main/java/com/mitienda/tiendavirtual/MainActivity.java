@@ -26,13 +26,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
 import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
 import com.mitienda.tiendavirtual.model.Producto;
 import com.mitienda.tiendavirtual.model.SharedViewModel;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CatalogoAdapter.OnItemClickListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private TextView tvEmailUsuario;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView)navView.findViewById(R.id.tv_user_email_main);
         //agregar datos del usuario al drawer
         tv.setText(firebaseAuth.getCurrentUser().getEmail());
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_mispedidos, R.id.nav_catalogo, R.id.shopCartFragment)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_mispedidos, R.id.nav_catalogo, R.id.shopCartFragment, R.id.nav_profile)
                 .setDrawerLayout(drawer)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -78,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -116,5 +115,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         finish();
+    }
+
+    @Override
+    public void onItemClick(Producto producto) {
+
     }
 }

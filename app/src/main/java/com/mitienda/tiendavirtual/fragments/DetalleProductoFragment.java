@@ -72,8 +72,12 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
         tvNombre.setText(titulo);
         tvColor.setText(producto.getColor());
         String detalle = producto.getDetalle();
-        String detalleModificado = detalle.replace("; ", "\n");
-        tvDetalle.setText(detalleModificado);
+        if (detalle.contains(";")) {
+            String detalleModificado = detalle.replace("; ", "\n");
+            tvDetalle.setText(detalleModificado);
+        } else {
+            tvDetalle.setText(detalle);
+        }
         tvCategoria.setText(producto.getCategoria());
         String precio = "S/ " + producto.getPrecio();
         tvPrecio.setText(precio);

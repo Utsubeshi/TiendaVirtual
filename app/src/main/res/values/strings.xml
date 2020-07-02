@@ -40,5 +40,7 @@
     <string name="val_btn_checkout">checkout</string>
     <string name="val_total">Sub-Total:</string>
     <string name="val_cantidad">Cantidad de productos</string>
+    <string name="val_buscar">Buscar</string>
+    <string name="menu_profile">Mi perfil</string>
 
 </resources>

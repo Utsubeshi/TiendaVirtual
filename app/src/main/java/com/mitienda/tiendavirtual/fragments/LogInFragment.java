@@ -2,11 +2,6 @@ package com.mitienda.tiendavirtual.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -30,8 +29,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mitienda.tiendavirtual.MainActivity;
 import com.mitienda.tiendavirtual.R;
+import com.mitienda.tiendavirtual.SplashActivity;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -74,9 +73,10 @@ public class LogInFragment extends Fragment {
 
         signInClient = GoogleSignIn.getClient(getContext(),gso);
 
+        //validar sesion
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getContext());
         if(signInAccount != null || fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getContext(), MainActivity.class));
+            startActivity(new Intent(getContext(), SplashActivity.class));
         }
 
         btnsignInGoogle.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,7 @@ public class LogInFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(getActivity(), "Tu cuenta de Google ha sido conectada", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), MainActivity.class));
+                        startActivity(new Intent(getActivity(), SplashActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -162,7 +162,7 @@ public class LogInFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getContext(), "Bienvenido!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getContext(),MainActivity.class));
+                    startActivity(new Intent(getContext(),SplashActivity.class));
                 } else {
                     Toast.makeText(getContext(),"Error: "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }

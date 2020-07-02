@@ -23,7 +23,7 @@ import java.util.List;
 
 import static androidx.navigation.Navigation.findNavController;
 
-public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHolder> {
+public class CatalogoAdapter extends RecyclerView.Adapter<CatalogoAdapter.ViewHolder>  {
 
     Context context;
     List<Producto> lista;
