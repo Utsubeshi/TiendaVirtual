@@ -5,4 +5,5 @@
     <color name="colorPrimaryLight">#C5C1E4</color>
     <color name="colorAccent">#2699FB</color>
     <color name="colorRojoGoogle">#DB4437</color>
+    <color name="whiteAlpha">#80FFFFFF</color>
 </resources>

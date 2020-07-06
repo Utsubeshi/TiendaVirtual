@@ -28,8 +28,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
 import com.mitienda.tiendavirtual.fragments.CatalogoFragmentDirections;
+import com.mitienda.tiendavirtual.model.CarritoViewModel;
 import com.mitienda.tiendavirtual.model.Producto;
-import com.mitienda.tiendavirtual.model.SharedViewModel;
 
 import java.util.List;
 
@@ -39,13 +39,13 @@ public class MainActivity extends AppCompatActivity implements CatalogoAdapter.O
     private TextView tvEmailUsuario;
     FloatingActionButton fab;
     private NavController navController;
-    private SharedViewModel sharedViewModel;
+    private CarritoViewModel carritoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+        carritoViewModel = new ViewModelProvider(this).get(CarritoViewModel.class);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fab = findViewById(R.id.fab);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements CatalogoAdapter.O
             //Abrir y validar el carrito
             @Override
             public void onClick(View view) {
-                List<Producto> carrito = sharedViewModel.getProductosAgregados();
+                List<Producto> carrito = carritoViewModel.getProductosAgregados();
                 if (carrito == null || carrito.size() == 0) {
                     Toast.makeText(MainActivity.this, "No hay productos en el carrito", Toast.LENGTH_SHORT).show();
                     return;

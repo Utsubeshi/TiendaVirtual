@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,8 +28,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mitienda.tiendavirtual.R;
 import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
+import com.mitienda.tiendavirtual.model.CarritoViewModel;
 import com.mitienda.tiendavirtual.model.Producto;
-import com.mitienda.tiendavirtual.model.SharedViewModel;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,7 @@ public class CatalogoFragment extends Fragment implements CatalogoAdapter.OnItem
 
     //NavController
     private NavController navController;
-    private SharedViewModel sharedViewModel;
+    private CarritoViewModel carritoViewModel;
 
     public CatalogoFragment() {
         // Required empty public constructor
@@ -84,7 +85,7 @@ public class CatalogoFragment extends Fragment implements CatalogoAdapter.OnItem
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        carritoViewModel = new ViewModelProvider(requireActivity()).get(CarritoViewModel.class);
     }
 
     //agregar producto al carrito
@@ -92,7 +93,7 @@ public class CatalogoFragment extends Fragment implements CatalogoAdapter.OnItem
     public void onItemClick(Producto producto) {
         Toast.makeText(requireContext(), producto.getNombre() + " Agreado al carro", Toast.LENGTH_SHORT).show();
         //Toast.makeText(requireContext(), producto.getId(), Toast.LENGTH_SHORT).show();
-        sharedViewModel.agregarProducto(producto);
+        carritoViewModel.agregarProducto(producto);
     }
 
     //Busqueda
@@ -139,6 +140,15 @@ public class CatalogoFragment extends Fragment implements CatalogoAdapter.OnItem
         searchView.setOnQueryTextListener(this);
 
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+            fab.show();
+        } catch (Exception e){  }
     }
 }
 

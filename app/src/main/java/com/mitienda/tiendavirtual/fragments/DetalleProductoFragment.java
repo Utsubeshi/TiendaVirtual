@@ -17,8 +17,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mitienda.tiendavirtual.R;
 import com.mitienda.tiendavirtual.adapters.CatalogoAdapter;
+import com.mitienda.tiendavirtual.model.CarritoViewModel;
 import com.mitienda.tiendavirtual.model.Producto;
-import com.mitienda.tiendavirtual.model.SharedViewModel;
 import com.squareup.picasso.Picasso;
 
 public class DetalleProductoFragment extends Fragment implements View.OnClickListener , CatalogoAdapter.OnItemClickListener {
@@ -29,7 +29,7 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
     int contador = 1;
     private Producto producto;
 
-    SharedViewModel sharedViewModel;
+    CarritoViewModel carritoViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +48,7 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
         tvDetalle = view.findViewById(R.id.tv_detalle_prducto);
         tvColor = view.findViewById(R.id.tv_color_prducto);
         tvPrecio = view.findViewById(R.id.tv_precio_producto);
-        btnAddToCart = view.findViewById(R.id.btn_add);
+        btnAddToCart = view.findViewById(R.id.btn_checkout);
         btnAddToCart.setOnClickListener(this);
         return view;
     }
@@ -62,7 +62,7 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
             producto = args.getProducto();
             //llenar las vistas
             updateUI();
-            sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+            carritoViewModel = new ViewModelProvider(requireActivity()).get(CarritoViewModel.class);
         }
     }
 
@@ -108,7 +108,7 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
                     tvCantidad.setText(String.valueOf(contador));
                 }
                 break;
-            case (R.id.btn_add):
+            case (R.id.btn_checkout):
                // Mandar producto al sharedmodel
                 producto.setCantidad(contador);
                 onItemClick(producto);
@@ -122,6 +122,6 @@ public class DetalleProductoFragment extends Fragment implements View.OnClickLis
     @Override
     public void onItemClick(Producto producto) {
         Toast.makeText(requireContext(), producto.getNombre() + " Agreado al carro", Toast.LENGTH_SHORT).show();
-        sharedViewModel.agregarProducto(producto);
+        carritoViewModel.agregarProducto(producto);
     }
 }

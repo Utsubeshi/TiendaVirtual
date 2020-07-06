@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SharedViewModel extends ViewModel {
+public class CarritoViewModel extends ViewModel {
 
     public static final String TAG = "SharedViewModel";
     //lista del carrito
@@ -70,6 +70,5 @@ public class SharedViewModel extends ViewModel {
         producto.setCantidad(producto.getCantidad() - 1);
         list.set(position, producto);
         mutableCarritoList.setValue(list);
-
     }
 }

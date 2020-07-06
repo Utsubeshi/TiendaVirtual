@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_white_bg"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    tools:context=".fragments.UserUpdateCheckoutFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/tv_chk_user_data"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_nombres"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        android:hint="@string/val_et_usuario_nombre"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:startIconDrawable="@drawable/ic_account_circle_black_24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_nombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_paterno"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        android:hint="@string/val_et_paterno"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_chk_nombres"
+        app:startIconDrawable="@drawable/ic_account_circle_black_24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_paterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_materno"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        android:hint="@string/val_et_materno"
+        app:layout_constraintBottom_toBottomOf="@+id/ti_chk_paterno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/ti_chk_paterno"
+        app:startIconDrawable="@drawable/ic_account_circle_black_24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_materno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_dni"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        android:hint="@string/val_et_dni"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_chk_materno"
+        app:startIconDrawable="@drawable/ic_account_circle_black_24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="8"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_celular"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        android:hint="@string/val_et_phone"
+        app:layout_constraintBottom_toBottomOf="@+id/ti_chk_dni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/ti_chk_dni"
+        app:startIconDrawable="@drawable/ic_baseline_phone_iphone_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_celular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="9"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_chk_direccion"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:boxCornerRadiusBottomEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusBottomStart="@dimen/round_corner_val"
+        app:boxCornerRadiusTopEnd="@dimen/round_corner_val"
+        app:boxCornerRadiusTopStart="@dimen/round_corner_val"
+        android:hint="@string/val_et_direccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ti_chk_celular"
+        app:startIconDrawable="@drawable/ic_baseline_add_location_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_chk_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_update_user_chk"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/val_btn_userchk"
+        android:textColor="@android:color/white"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/ic_deliver_01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.47" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.53" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

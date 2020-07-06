@@ -44,10 +44,24 @@
         android:id="@+id/shopCartFragment"
         android:name="com.mitienda.tiendavirtual.fragments.ShopCartFragment"
         android:label="@string/label_carrito"
-        tools:layout="@layout/fragment_shop_cart" />
+        tools:layout="@layout/fragment_shop_cart" >
+        <action
+            android:id="@+id/action_shopCartFragment_to_nav_checkout"
+            app:destination="@id/nav_checkout" />
+    </fragment>
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.mitienda.tiendavirtual.fragments.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/nav_checkout"
+        android:name="com.mitienda.tiendavirtual.fragments.CheckoutFragment"
+        android:label="@string/label_checkout"
+        tools:layout="@layout/fragment_checkout" />
+    <fragment
+        android:id="@+id/nav_userupdate_checkout"
+        android:name="com.mitienda.tiendavirtual.fragments.UserUpdateCheckoutFragment"
+        android:label="@string/label_userupdate_checkout"
+        tools:layout="@layout/fragment_user_update_checkout" />
 </navigation>

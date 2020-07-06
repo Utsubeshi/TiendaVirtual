@@ -59,7 +59,7 @@ public class LogInFragment extends Fragment {
 
         etEmail = view.findViewById(R.id.et_username_login);
         etPassword = view.findViewById(R.id.et_login_password);
-        btnLogin = view.findViewById(R.id.btn_add_cart);
+        btnLogin = view.findViewById(R.id.btn_login);
         tvRegistar = view.findViewById(R.id.btn_registrarse);
         tvRecuperarPass = view.findViewById(R.id.tv_recuperar_pass);
         btnsignInGoogle = view.findViewById(R.id.btn_google_login);

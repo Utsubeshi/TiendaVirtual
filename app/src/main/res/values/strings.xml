@@ -42,5 +42,27 @@
     <string name="val_cantidad">Cantidad de productos</string>
     <string name="val_buscar">Buscar</string>
     <string name="menu_profile">Mi perfil</string>
+    <string name="label_checkout">Checkout</string>
+    <string name="label_userupdate_checkout">Actualizar datos del cliente</string>
+    <string name="val_et_paterno">Apellido paterno</string>
+    <string name="val_et_materno">Apellido materno</string>
+    <string name="val_et_dni">Ingrese su DNI</string>
+    <string name="val_et_phone">Ingrese su celular</string>
+    <string name="tv_chk_user_data">Para proceder con su pedido es necesario que complete sus datos, gracias:</string>
+    <string name="val_et_direccion">Ingrese su direccion</string>
+    <string name="val_btn_userchk">Guardar</string>
+    <string name="val_btn_edit_user">Cambiar</string>
+    <string name="val_direccio_entrega">Detalles de entrega</string>
+    <string name="val_pedido">Resumen del pedido:</string>
+    <string name="val_nombre">Nombre:</string>
+    <string name="val_direccio">Direccion:</string>
+    <string name="val_celu">Celular:</string>
+    <string name="val_dni">DNI:</string>
+    <string name="val_total_pedido">Total del pedido:</string>
+    <string name="val_pedido_costo">Envio:</string>
+    <string name="val_costo_pedido">S/ 15</string>
+    <string name="val_btn_confirmar">Confirmar pedido</string>
+    <string name="val_btn_pay">Pagar</string>
+    <string name="val_tv_pago">Por favor ingrese los datos de su tarjeta:</string>
 
 </resources>
